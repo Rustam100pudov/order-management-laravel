@@ -9,10 +9,24 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'status' => 'required|in:new,in_progress,completed',
+            'description' => 'nullable|string|max:1000',
+        ]);
+
+        $order = Order::findOrFail($id);
+        $order->status = $request->status;
+        $order->description = $request->description;
+        $order->save();
+
+        return response()->json($order);
+    }
+
     public function index(Request $request)
     {
         $query = Order::with(['items', 'operator']);
-
 
         // Фильтр по дате "с" и "по"
         if ($request->has('from')) {
