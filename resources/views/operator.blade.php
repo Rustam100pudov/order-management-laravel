@@ -8,13 +8,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body class="bg-light">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg" style="background:#f8f9fa; border-bottom:1px solid #dee2e6;">
         <div class="container">
-            <a class="navbar-brand" href="#">Система заказов</a>
+            <a class="navbar-brand fw-bold text-secondary" href="#">Система заказов</a>
             <div class="navbar-nav ms-auto">
                 <form method="POST" action="/logout" class="d-inline">
                     @csrf
-                    <button type="submit" class="btn btn-outline-light">Выход</button>
+                    <button type="submit" class="btn btn-secondary fw-bold px-4" style="color:#fff;">Выход</button>
                 </form>
             </div>
         </div>
@@ -75,15 +75,15 @@
                                         </select>
                                     </div>
                                     <div class="col-md-1 d-flex align-items-end">
-                                        <button type="button" class="btn btn-danger btn-remove-product d-none">&times;</button>
+                                        <button type="button" class="btn btn-outline-secondary btn-remove-product d-none">&times;</button>
                                     </div>
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <button type="button" class="btn btn-outline-primary" id="addProductBtn">Добавить товар</button>
+                                <button type="button" class="btn btn-outline-secondary" id="addProductBtn">Добавить товар</button>
                             </div>
                             <div class="d-grid">
-                                <button type="submit" class="btn btn-success btn-lg" id="submitBtn">Создать заказ</button>
+                                <button type="submit" class="btn btn-secondary btn-lg" id="submitBtn">Создать заказ</button>
                             </div>
                         </form>
                     </div>
@@ -113,7 +113,7 @@
                 </select>
             </div>
             <div class="col-md-1 d-flex align-items-end">
-                <button type="button" class="btn btn-danger btn-remove-product">&times;</button>
+                <button type="button" class="btn btn-outline-secondary btn-remove-product">&times;</button>
             </div>
         `;
         productsList.appendChild(row);

@@ -8,14 +8,14 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg" style="background:#f8f9fa; border-bottom:1px solid #dee2e6;">
         <div class="container">
-            <a class="navbar-brand" href="#">Система заказов</a>
+            <a class="navbar-brand fw-bold text-secondary" href="#">Система заказов</a>
             <div class="navbar-nav ms-auto">
-                <button class="btn btn-outline-light me-2" onclick="showStatistics()">Статистика</button>
+                <button class="btn btn-outline-secondary me-2 fw-bold" onclick="showStatistics()">Статистика</button>
                 <form method="POST" action="/logout" class="d-inline">
                     @csrf
-                    <button type="submit" class="btn btn-outline-light">Выход</button>
+                    <button type="submit" class="btn btn-secondary fw-bold px-4" style="color:#fff;">Выход</button>
                 </form>
             </div>
         </div>
@@ -47,13 +47,13 @@
             </select>
         </div>
         <div class="col-md-1">
-            <button class="btn btn-primary w-100" onclick="loadOrders()">Применить</button>
+            <button class="btn btn-secondary w-100" onclick="loadOrders()">Применить</button>
         </div>
         <div class="col-md-1">
             <button class="btn btn-outline-secondary w-100" onclick="resetFilters()">Сброс</button>
         </div>
         <div class="col-md-1 text-end">
-            <button class="btn btn-outline-dark" onclick="showStatistics()">Статистика</button>
+            <button class="btn btn-outline-secondary" onclick="showStatistics()">Статистика</button>
         </div>
     </div>
 
