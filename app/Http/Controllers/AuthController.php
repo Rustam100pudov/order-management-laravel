@@ -22,7 +22,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended(
-                auth()->user()->role === 'manager' ? '/orders' : '/orders/create'
+                auth()->user()->role === 'manager' ? '/manager' : '/operator'
             );
         }
 

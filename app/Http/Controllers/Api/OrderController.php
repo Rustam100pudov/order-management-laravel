@@ -69,7 +69,7 @@ class OrderController extends Controller
             'customer_inn' => $request->customer_inn,
             'company_name' => $request->company_name,
             'customer_address' => $request->customer_address,
-            'operator_id' => auth()->id()
+            'operator_id' => 1 // временно для теста API без авторизации
         ]);
 
         foreach ($request->items as $item) {

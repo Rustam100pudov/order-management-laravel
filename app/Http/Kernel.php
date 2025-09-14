@@ -26,7 +26,7 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
-            // ...existing code...
+            // intentionally left empty to disable all middleware for API
         ],
     ];
 
