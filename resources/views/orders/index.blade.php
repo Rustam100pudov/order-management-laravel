@@ -10,7 +10,10 @@
 <body>
     <nav class="navbar navbar-expand-lg" style="background:#f8f9fa; border-bottom:1px solid #dee2e6;">
         <div class="container">
-            <a class="navbar-brand fw-bold text-secondary" href="#">Система заказов</a>
+            <a class="navbar-brand fw-bold text-secondary d-flex align-items-center" href="#">
+                Система заказов
+                <span id="roleLabel" class="ms-3 small text-muted" style="font-weight:600;"></span>
+            </a>
             <div class="navbar-nav ms-auto">
                 <form method="POST" action="/logout" class="d-inline">
                     @csrf
@@ -93,6 +96,20 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Определяем роль по URL
+        const roleLabel = document.getElementById('roleLabel');
+        if (roleLabel) {
+            const path = window.location.pathname;
+            if (path.includes('/manager')) {
+                roleLabel.textContent = 'Руководитель';
+            } else if (path.includes('/operator')) {
+                roleLabel.textContent = 'Оператор';
+            } else {
+                roleLabel.textContent = '';
+            }
+        }
+    </script>
     <style>
         .filter-btn {
             min-width: 80px;

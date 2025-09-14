@@ -10,7 +10,10 @@
 <body class="bg-light">
 <nav class="navbar navbar-expand-lg" style="background:#f8f9fa; border-bottom:1px solid #dee2e6;">
     <div class="container">
-        <a class="navbar-brand fw-bold text-secondary" href="#">Система заказов</a>
+        <a class="navbar-brand fw-bold text-secondary d-flex align-items-center" href="#">
+            Система заказов
+            <span id="roleLabel" class="ms-3 small text-muted" style="font-weight:600;"></span>
+        </a>
         <div class="navbar-nav ms-auto">
             <form method="POST" action="/logout" class="d-inline">
                 @csrf
@@ -141,6 +144,18 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+    // Показываем роль "Оператор" если URL содержит /operator
+    const roleLabel = document.getElementById('roleLabel');
+    if (roleLabel) {
+        const path = window.location.pathname;
+        if (path.includes('/operator')) {
+            roleLabel.textContent = 'Оператор';
+        } else {
+            roleLabel.textContent = '';
+        }
+    }
+</script>
+<script>
 /* ========================
    Динамика товаров в форме
    ======================== */
@@ -252,7 +267,9 @@ function productBadge(p) {
     const name = p.product_name || p.name || '';
     const qty  = p.quantity || p.qty || '';
     const unit = mapUnit(p.unit);
-    return `<span class="badge text-bg-light border me-1 mb-1">${escapeHtml(`${name} — ${qty} ${unit}`.trim())}</span>`;
+    // Показываем единицу измерения только если она есть
+    const unitStr = unit ? ` ${unit}` : '';
+    return `<span class="badge text-bg-light border me-1 mb-1">${escapeHtml(`${name} — ${qty}${unitStr}`.trim())}</span>`;
 }
 
 function rowHtml(o) {
