@@ -12,7 +12,6 @@
         <div class="container">
             <a class="navbar-brand fw-bold text-secondary" href="#">Система заказов</a>
             <div class="navbar-nav ms-auto">
-                <button class="btn btn-outline-secondary me-2 fw-bold" onclick="showStatistics()">Статистика</button>
                 <form method="POST" action="/logout" class="d-inline">
                     @csrf
                     <button type="submit" class="btn btn-secondary fw-bold px-4" style="color:#fff;">Выход</button>
@@ -46,14 +45,12 @@
                 <option value="completed">Завершённые</option>
             </select>
         </div>
-        <div class="col-md-1">
-            <button class="btn btn-secondary w-100" onclick="loadOrders()">Применить</button>
-        </div>
-        <div class="col-md-1">
-            <button class="btn btn-outline-secondary w-100" onclick="resetFilters()">Сброс</button>
-        </div>
-        <div class="col-md-1 text-end">
-            <button class="btn btn-outline-secondary" onclick="showStatistics()">Статистика</button>
+        <div class="col-md-3 d-flex align-items-end">
+            <div class="d-flex gap-2 w-100">
+                <button class="btn btn-secondary filter-btn flex-fill" onclick="loadOrders()">Применить</button>
+                <button class="btn btn-outline-secondary filter-btn flex-fill" onclick="resetFilters()">Сброс</button>
+                <button class="btn btn-outline-secondary filter-btn flex-fill" onclick="showStatistics()">Статистика</button>
+            </div>
         </div>
     </div>
 
@@ -68,6 +65,7 @@
                         <th>Компания</th>
                         <th>Адрес</th>
                         <th style="min-width:180px">Товар</th>
+                        <th>Описание</th>
                     </tr>
                 </thead>
                 <tbody id="ordersTable"></tbody>
@@ -95,6 +93,19 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .filter-btn {
+            min-width: 80px;
+            min-height: 32px;
+            font-weight: 500;
+            font-size: 0.82rem;
+            padding: 0.18rem 0.6rem;
+        }
+        .gap-2 { gap: 0.5rem !important; }
+        @media (max-width: 991px) {
+            .filter-btn { min-width: 65px; font-size: 0.78rem; }
+        }
+    </style>
     <script>
         let currentPage = 1;
 
@@ -146,6 +157,7 @@
                     <td>${order.company_name || '-'}</td>
                     <td>${order.customer_address || '-'}</td>
                     <td style="white-space:pre-line">${items}</td>
+                    <td>${order.description ? order.description : ''}</td>
                 `;
                 tbody.appendChild(row);
             });
