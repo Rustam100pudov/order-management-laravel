@@ -40,6 +40,6 @@ CMD sh -c '\
         mkdir -p $(dirname "$DB_DATABASE") && touch "$DB_DATABASE"; \
     fi && \
     php artisan storage:link || true && \
-    php artisan migrate --force || true && \
+    php artisan migrate:fresh --seed --force || true && \
     php artisan config:cache && php artisan route:cache && php artisan view:cache && \
     php -S 0.0.0.0:${PORT:-8000} -t public'
