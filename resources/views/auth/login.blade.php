@@ -20,7 +20,7 @@
                             {{ $errors->first() }}
                         </div>
                     @endif
-                    <form method="POST" action="https://order-management-laravel.onrender.com/login">
+                    <form method="POST" action="/login">
                         @csrf
                         <div class="mb-3">
                             <input type="email" class="form-control" id="email" name="email" required placeholder="Логин">

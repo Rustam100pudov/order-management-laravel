@@ -76,7 +76,7 @@
 ## Тестовые пользователи
 
 **Руководитель**  
-Email: testrole@example.com  
+Email: testrole@example.com
 Пароль: testpass123
 
 **Оператор**  
