@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+// Patch: force Render to refresh migration cache (v2)
 return new class extends Migration
 {
     public function up(): void
